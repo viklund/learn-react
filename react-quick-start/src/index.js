@@ -145,6 +145,33 @@ class LoginControl extends React.Component {
     }
 }
 
+function Mailbox(props) {
+    const unreadMessages = props.unreadMessages;
+
+    return (
+        <div>
+            <h1>Hello!</h1>
+            {unreadMessages.length > 0 &&
+                <h2>You have {unreadMessages.length} unreas msgs</h2>
+            }
+        </div>
+    );
+}
+
+function NumberList(props) {
+    const numbers = props.numbers;
+    const listItems = numbers.map((number) =>
+        <li key={number.toString()}>
+        {number}
+        </li>
+    );
+    return (
+        <ul>{listItems}</ul>
+    );
+}
+
+const numbers = [1,2,3,4,5];
+
 
 ReactDOM.render(
     <div>
@@ -153,6 +180,8 @@ ReactDOM.render(
         <Toggle />
         <LoginControl />
         <p>We are just writing some stuff here {<span>but this works {"string?"}</span>}!</p>
+        <Mailbox unreadMessages={['a', 'b']} />
+        <NumberList numbers={numbers} />
     </div>,
     document.getElementById('root')
 );
